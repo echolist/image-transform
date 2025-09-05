@@ -41,7 +41,7 @@ const App: React.FC = () => {
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      // Set canvas dimensions to match image
+      // Mengeset ukuran canvas sesuai gambar
       canvas.width = img.width;
       canvas.height = img.height;
 
@@ -65,8 +65,8 @@ const App: React.FC = () => {
         const average = (r + g + b) / 3;
 
         if (average > 128) {
-          // Buat jadi pink, kreasikan sesuai selera, bisa pakai nilai average untuk gradasi
-          data[i] = 231;     // Red
+          // Buat jadi pink, kreasikan sesuai selera, bisa pakai nilai average untuk gradasi, misal pakai mod kita
+          data[i] = 231 - (average % 30);     // Red
           data[i + 1] = 84; // Green
           data[i + 2] = 128; // Blue
         } else {
@@ -144,7 +144,7 @@ const App: React.FC = () => {
           </div>
         )}
 
-        {/* Images Display */}
+        {/* Tampilkan Gambar */}
         {images.original && (
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="flex justify-between items-center mb-6">
@@ -153,12 +153,12 @@ const App: React.FC = () => {
                 onClick={resetImages}
                 className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
               >
-                Upload ulang
+                Proses Gambar Lain
               </button>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {/* Original Image */}
+              {/* Gambar Ori */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-700 mb-4">Gambar Asli</h3>
                 <div className="border rounded-xl overflow-hidden shadow-md">
@@ -170,7 +170,7 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              {/* Transformed Image */}
+              {/* Gambar Hasil */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-700 mb-4">
                   Gambar yang Diubah
